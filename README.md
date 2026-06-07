@@ -29,7 +29,7 @@ A beautiful, fast, and interactive website for **Shree Palwal Food Hub** restaur
    ```
 
 3. **Open Website**:
-   Open your browser and navigate to: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+   Open your browser and navigate to: https://palwal.onrender.com/
 
 ## Deployment on Render
 
