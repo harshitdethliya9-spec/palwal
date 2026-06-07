@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Palwal Food Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <!-- Using text logo for now, can be replaced with img tag -->
+            <h1>Shree Palwal Food Hub</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Shree Palwal Food Hub</h2>
+            <p>Experience the finest dine-in moments. Visit us today!</p>
+            <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </header>
+
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Our Delicious Menu</h2>
+        <p class="section-subtitle">Freshly prepared, served hot at your table.</p>
+        
+        <!-- Tab Navigation Buttons -->
+        <div class="tab-container">
+            {% for tab in tabs %}
+            <button class="tab-btn {% if loop.first %}active{% endif %}" onclick="openTab(event, '{{ tab.id }}')">
+                {{ tab.name }}
+            </button>
+            {% endfor %}
+        </div>
+
+        <!-- Tab Panels -->
+        {% for tab in tabs %}
+        <div id="{{ tab.id }}" class="tab-content {% if loop.first %}active{% endif %}">
+            {% for cat_name in tab.categories %}
+            {% set category = menu[cat_name] %}
+            <div class="menu-category">
+                <h3 class="category-title">{{ cat_name }}</h3>
+                <div class="menu-list">
+                    {% for item in category['items'] %}
+                    <div class="menu-item">
+                        <span class="item-name">{{ item.name }}</span>
+                        <span class="item-dots"></span>
+                        <div class="item-prices">
+                            {% if category.has_half %}
+                                {% if item.half %}
+                                <span class="half-price"><small>Half</small> ₹{{ item.half }}</span>
+                                {% else %}
+                                <span class="half-price-empty"><small>Half</small> -</span>
+                                {% endif %}
+                                <span class="full-price"><small>Full</small> ₹{{ item.full }}</span>
+                            {% else %}
+                                <span class="single-price">₹{{ item.price }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <section id="location" class="location-section">
+        <h2 class="section-title">Find Us Here</h2>
+        <div class="map-container">
+            <!-- Google Maps Embed -->
+            <iframe 
+                src="https://maps.google.com/maps?q=Shree%20Palwal%20food%20hub,%20Maksi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <!-- Note: The embed link is a placeholder general area since standard maps.app.goo.gl link needs to be converted to embed URL. -->
+            <div class="location-details">
+                <a href="https://maps.app.goo.gl/TTECQz2qRJvzXVn79" target="_blank" class="btn-outline">Open in Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>📞 +91 90987 07848</p>
+                <p>✉️ info@shreepalwalfoodhub.com</p>
+                <p>📍 AB Road, NH52, Maksi, Fanya, Madhya Pradesh 456770</p>
+            </div>
+            <div class="footer-note">
+                <p>&copy; 2026 Shree Palwal Food Hub. All rights reserved.</p>
+                <p>No Online Delivery - We believe in fresh, hot, table-served food.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

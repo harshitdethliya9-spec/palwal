@@ -1,0 +1,7 @@
+mujhe ek web banana hai jo ke mere resturant ka hoga.Es web pe mai mere resturant mai ordering ke leye jo jo chijey hai unko mai vaha list karunga or unke price bhi bataunga.
+Web ke footer mai mera conatact like mobile no., email, Address etc.honge .
+mere resturnt ka ek logo bhi hoga usko web mai kahi bhi upar ki side mai ek side mai show karna hai.
+Mera resturant online food deliver nahi krta hai,sirf resturant pe aa kar order karna hota hai. 
+Mere resturant ki location or name https://maps.app.goo.gl/TTECQz2qRJvzXVn79 ye hai 
+mere resturant ka muijhe ek web bana ke do jaha log search kr sake ki ye bhi ek resturant hai or yaha pe ye ye chize milti hai .
+acha UI banana hai .Engaging UI and must be fast.
